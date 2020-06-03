@@ -52,7 +52,6 @@ add_attraction("Cairo, Egypt", ["Egyptian Museum", ["museum"]])
 def find_attraction(destination,interests):
     destination_index = get_destination_index(destination)
     attractions_in_city = attractions[destination_index]
-    print(attractions_in_city) #test
     attractions_with_interest = []
     for attraction in attractions_in_city:
         possible_attraction = attraction
@@ -66,10 +65,22 @@ def find_attraction(destination,interests):
 
 la_arts = find_attraction("Los Angeles, USA", ['art'])
 
-print(la_arts)
+#print(la_arts)
 
 
+#main event // See The Parts of a City You want to See
 
+def get_attractions_for_traveler(traveler):
+    traveler_destination = traveler[1]
+    traveler_interests = traveler[2]
+    traveler_attraction = find_attraction(traveler_destination,traveler_interests)
+    attractions_str = "the "
+    for attraction in traveler_attraction:
+        attractions_str += attraction
+    interests_string = "Hi " + traveler[0] + "! We think you'll like these places around " + traveler_destination + ": "+ attractions_str + "."
+    return interests_string
+
+print(get_attractions_for_traveler(['Dereck Smill', 'Paris, France', ['monument']]))
 
 
 

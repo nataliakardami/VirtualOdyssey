@@ -24,8 +24,9 @@ class Character(object):
 
 
 class Player(Character):
-    def __init__(self, description):
+    def __init__(self, description, name):
         # super().__init__(name = self.set_name(self))
+        super().__init__(name, description)
         self.set_name()
         self.bag = []
         self.description = description
@@ -52,9 +53,9 @@ class NonPlayableCharacter(Character):
         :type is_ally: bool
         """
         if is_ally:
-            return self.name + " is an ally."
+            return self.name, " is an ally."
         else:
-            return self.name + " is an enemy."
+            return self.name, " is an enemy."
 
 
 class Collectables(object):
@@ -68,7 +69,7 @@ class Collectables(object):
         self.score = score
 
     def __str__(self):
-        return str(self.item_name, " is worth ", self.score)
+        return str(self.item_name), " is worth ", str(self.score)
 
 
 if __name__ == '__main__':
